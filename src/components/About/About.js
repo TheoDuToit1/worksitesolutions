@@ -30,7 +30,15 @@ const About = () => {
               <p>In 2003, we obtained our own FSP License and have since grown into a leading provider of comprehensive financial and insurance solutions across South Africa.</p>
             </div>
             <div className="about-image">
-              <div className="image-placeholder">Our Journey</div>
+              <img 
+                src={require('../../assets/images/51090958549.png')} 
+                alt="Our Journey" 
+                className="journey-image"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = 'https://placehold.co/600x400/f8fafc/0056b3?text=Our+Journey';
+                }}
+              />
             </div>
           </div>
         </div>

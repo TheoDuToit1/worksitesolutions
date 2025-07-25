@@ -154,12 +154,6 @@ const Header = () => {
             >
               Home
             </Link>
-            <Link 
-              to="/about" 
-              className={`nav-item ${isActive('/about') ? 'active' : ''}`}
-            >
-              About Us
-            </Link>
             
             <div className={`dropdown ${isActive('/services') ? 'active' : ''}`}>
               <button 
@@ -168,21 +162,21 @@ const Header = () => {
                 aria-haspopup="true"
               >
                 Our Services
-                <FaChevronDown className="dropdown-icon" />
               </button>
-              <div className="dropdown-menu">
-                {servicesItems.map((item, index) => (
-                  <Link 
-                    key={index}
-                    to={item.path}
-                    className="dropdown-item"
-                    onClick={() => window.scrollTo(0, 0)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+              <div className="dropdown-menu" aria-labelledby="servicesDropdown">
+                <Link to="/services#funeral" className="dropdown-item">Funeral Plans</Link>
+                <Link to="/services#retirement" className="dropdown-item">Retirement Planning</Link>
+                <Link to="/services#investment" className="dropdown-item">Investment Plans</Link>
+                <Link to="/services#life" className="dropdown-item">Life Insurance</Link>
               </div>
             </div>
+            
+            <Link 
+              to="/about" 
+              className={`nav-item ${isActive('/about') ? 'active' : ''}`}
+            >
+              About Us
+            </Link>
             
             <Link 
               to="/contact" 

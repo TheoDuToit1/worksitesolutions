@@ -20,9 +20,9 @@ const Home = () => {
               <Link to="/services" className="btn btn-primary">
                 Explore Our Services <FaArrowRight className="icon-right" />
               </Link>
-              <Link to="/contact" className="quote-button">
-                <span>free quotes</span>
-              </Link>
+              <button className="button">
+                <span>quote a service</span>
+              </button>
             </div>
           </div>
         </div>
@@ -59,37 +59,6 @@ const Home = () => {
               </div>
               <h3>Dedicated Support</h3>
               <p>We're with you every step of the way, offering ongoing support and assistance when you need it most.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="about-section section bg-light">
-        <div className="container">
-          <div className="about-grid">
-            <div className="about-content">
-              <h2>About Worksite Solutions</h2>
-              <p>
-                Worksite Solutions is a registered Financial Services Provider (FSP License 12994), licensed for Long Term Insurance Category A, B, C and Short-Term Insurance Personal and Commercial Lines.
-              </p>
-              <p>
-                Since our establishment in February 2001, we have been committed to developing strong relationships with our clients and providing them with the best financial solutions tailored to their needs.
-              </p>
-              <Link to="/about" className="btn">
-                Learn More <FaArrowRight className="icon-right" />
-              </Link>
-            </div>
-            <div className="about-image">
-              <img 
-                src={require('../../assets/images/3d-illustration-hands-with-heart-white.jpg')} 
-                alt="Our Team" 
-                className="team-image"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = 'https://placehold.co/600x400/f8fafc/0056b3?text=Worksite+Solutions';
-                }}
-              />
             </div>
           </div>
         </div>
@@ -133,6 +102,37 @@ const Home = () => {
             <Link to="/services" className="btn btn-outline">
               View All Services
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="about-section section bg-light">
+        <div className="container">
+          <div className="about-grid">
+            <div className="about-content">
+              <h2>About Worksite Solutions</h2>
+              <p>
+                Worksite Solutions is a registered Financial Services Provider (FSP License 12994), licensed for Long Term Insurance Category A, B, C and Short-Term Insurance Personal and Commercial Lines.
+              </p>
+              <p>
+                Since our establishment in February 2001, we have been committed to developing strong relationships with our clients and providing them with the best financial solutions tailored to their needs.
+              </p>
+              <Link to="/about" className="btn">
+                Learn More <FaArrowRight className="icon-right" />
+              </Link>
+            </div>
+            <div className="about-image">
+              <img 
+                src={require('../../assets/images/3d-illustration-hands-with-heart-white.jpg')} 
+                alt="Our Team" 
+                className="team-image"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = 'https://placehold.co/600x400/f8fafc/0056b3?text=Worksite+Solutions';
+                }}
+              />
+            </div>
           </div>
         </div>
       </section>

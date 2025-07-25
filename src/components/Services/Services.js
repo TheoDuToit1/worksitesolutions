@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaShieldAlt, FaPiggyBank, FaChartLine, FaHandHoldingHeart, FaHandHoldingUsd, FaUserShield, FaArrowRight } from 'react-icons/fa';
+import { FaShieldAlt, FaPiggyBank, FaChartLine, FaHandHoldingHeart, FaHandHoldingUsd, FaUserShield, FaArrowRight, FaHandHoldingMedical, FaUniversity, FaFileContract, FaFileSignature } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './Services.css';
 
@@ -8,7 +8,7 @@ export const services = [
     {
       id: 'funeral',
       title: 'Funeral Plans',
-      icon: <FaHandHoldingHeart />,
+      icon: <FaHandHoldingHeart className="service-icon" />,
       description: 'Comprehensive funeral cover options to ensure your loved ones are taken care of during difficult times with affordable and flexible plans.',
       longDescription: 'Our funeral plans provide comprehensive coverage to help ease the financial burden on your loved ones during a difficult time. We offer flexible payment options and customizable plans to suit your specific needs and budget. With our funeral cover, you can have peace of mind knowing that your family will be taken care of when they need it most.',
       category: 'insurance',
@@ -29,7 +29,7 @@ export const services = [
     {
       id: 'retirement',
       title: 'Retirement Planning',
-      icon: <FaPiggyBank />,
+      icon: <FaPiggyBank className="service-icon" />,
       description: 'Secure your golden years with our tailored retirement solutions and investment strategies designed to provide financial stability.',
       longDescription: 'Our retirement planning services help you build a secure financial future. We work with you to create a personalized retirement strategy that aligns with your goals, whether you\'re just starting to save or are nearing retirement age. Our experts will guide you through investment options, tax strategies, and income planning to ensure you can enjoy your retirement years with confidence.',
       category: 'investment',
@@ -50,7 +50,7 @@ export const services = [
     {
       id: 'investment',
       title: 'Investment Plans',
-      icon: <FaChartLine />,
+      icon: <FaChartLine className="service-icon" />,
       description: 'Grow your wealth with our diverse range of investment options and expert financial advice to help you achieve your long-term goals.',
       longDescription: 'Our investment plans are designed to help you grow your wealth over time. Whether you\'re saving for a specific goal or building long-term wealth, we offer a range of investment options to suit your risk tolerance and financial objectives. Our team of investment professionals will work with you to develop a customized investment strategy and provide ongoing guidance to help you stay on track.',
       category: 'investment',
@@ -71,7 +71,7 @@ export const services = [
     {
       id: 'life',
       title: 'Life Insurance',
-      icon: <FaUserShield />,
+      icon: <FaUserShield className="service-icon" />,
       description: 'Protect your family\'s financial future with flexible life insurance options that provide peace of mind and security.',
       longDescription: 'Life insurance is one of the most important financial safety nets you can have in place for your loved ones. Our life insurance policies provide financial protection that can help your family maintain their standard of living, pay off debts, and cover future expenses in the event of your passing. We offer a range of policy options to suit different needs and budgets, with the flexibility to adjust coverage as your circumstances change.',
       category: 'insurance',
@@ -92,7 +92,7 @@ export const services = [
     {
       id: 'medical',
       title: 'Medical Aid',
-      icon: <FaShieldAlt />,
+      icon: <FaShieldAlt className="service-icon" />,
       description: 'Comprehensive medical aid solutions to ensure you and your family have access to quality healthcare when you need it most.',
       longDescription: 'Our medical aid plans provide comprehensive healthcare coverage for you and your family. We understand that healthcare needs change over time, which is why we offer flexible plans that can be tailored to your specific requirements. From hospital cover to chronic medication and day-to-day benefits, our medical aid solutions ensure you have access to quality healthcare when you need it most, without the financial stress.',
       category: 'insurance',
@@ -113,7 +113,7 @@ export const services = [
     {
       id: 'savings',
       title: 'Savings Plans',
-      icon: <FaHandHoldingUsd />,
+      icon: <FaHandHoldingUsd className="service-icon" />,
       description: 'Flexible savings solutions to help you achieve your financial goals, whether for education, a home, or other life milestones.',
       longDescription: 'Our savings plans are designed to help you achieve your financial goals, whether you\'re saving for education, a new home, a dream vacation, or any other important life milestone. We offer a variety of savings products with competitive interest rates and flexible terms to suit your timeline and financial situation. With automatic contribution options and online account management, reaching your savings goals has never been easier.',
       category: 'investment',
@@ -189,9 +189,11 @@ const Services = () => {
           <div className="services-container">
             {filteredServices.map((service, index) => (
               <Link to={`/services/${service.id}`} className="service-card" key={service.id}>
-                <div className={`service-card ${service.featured ? 'featured' : ''} fade-in`} 
+                <div className={`service-card-inner ${service.featured ? 'featured' : ''} fade-in`} 
                    style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="service-icon">{service.icon}</div>
+                  <div className="service-icon">
+                    {React.cloneElement(service.icon, { className: '' })}
+                  </div>
                   <h3>{service.title}</h3>
                   <p>{service.description}</p>
                   <div className="service-link">

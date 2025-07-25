@@ -174,28 +174,57 @@ const ServiceDetail = () => {
               </motion.div>
             )}
 
-            {/* Benefits Section */}
-            {service.benefits && (
-              <motion.div 
-                className="service-benefits"
-                variants={itemVariants}
-              >
-                <h3>Why Choose Us</h3>
-                <div className="benefits-grid">
-                  {service.benefits.map((benefit, index) => (
-                    <motion.div 
-                      key={index} 
-                      className="benefit-card"
-                      variants={itemVariants}
-                      whileHover={{ y: -5, boxShadow: '0 10px 25px rgba(0,0,0,0.1)' }}
-                    >
-                      <h4>{benefit.title}</h4>
-                      <p>{benefit.description}</p>
-                    </motion.div>
-                  ))}
+            {/* Why Choose Us Section */}
+            <motion.div className="why-choose-us" variants={itemVariants}>
+              <div className="why-choose-container">
+                <div className="why-choose-content">
+                  <h2>Why Choose Us</h2>
+                  <div className="features-list">
+                    <div className="feature-item">
+                      <div className="feature-icon">
+                        <FaCheck />
+                      </div>
+                      <div className="feature-text">
+                        <h4>Expert Team</h4>
+                        <p>Our team of certified professionals has years of experience in the industry.</p>
+                      </div>
+                    </div>
+                    <div className="feature-item">
+                      <div className="feature-icon">
+                        <FaCheck />
+                      </div>
+                      <div className="feature-text">
+                        <h4>Customer Satisfaction</h4>
+                        <p>We prioritize your needs and ensure 100% satisfaction with our services.</p>
+                      </div>
+                    </div>
+                    <div className="feature-item">
+                      <div className="feature-icon">
+                        <FaCheck />
+                      </div>
+                      <div className="feature-text">
+                        <h4>24/7 Support</h4>
+                        <p>Round-the-clock assistance for all your queries and concerns.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <motion.button 
+                    className="btn btn-primary"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Get a Free Quote
+                  </motion.button>
                 </div>
-              </motion.div>
-            )}
+                <div className="why-choose-image">
+                  <img 
+                    src={require('../../assets/images/b467a636-6025-4837-9df1-4255c80c92e3.png')} 
+                    alt="Professional team working" 
+                    className="why-choose-img"
+                  />
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Call to Action */}

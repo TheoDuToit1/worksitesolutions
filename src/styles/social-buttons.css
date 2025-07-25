@@ -1,0 +1,122 @@
+/* Social Buttons - Shared Styles */
+:root {
+  --social-bg: #e6f0ff;
+  --social-hover-bg: #1875FF;
+  --social-color: #1875FF;
+  --social-hover-color: #ffffff;
+  --social-border-radius: 12px;
+  --social-size: 40px;
+  --social-hover-shadow: 0 6px 18px rgba(0, 102, 204, 0.25);
+  --social-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.social-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--social-size);
+  height: var(--social-size);
+  background-color: var(--social-bg);
+  color: var(--social-color);
+  border-radius: var(--social-border-radius);
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: var(--social-transition);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.social-button i,
+.social-button svg {
+  position: relative;
+  z-index: 2;
+  transition: var(--social-transition);
+}
+
+.social-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--social-hover-bg), #0066cc);
+  opacity: 0;
+  transition: var(--social-transition);
+  z-index: 1;
+}
+
+.social-button:hover {
+  color: var(--social-hover-color);
+  transform: translateY(-3px);
+  box-shadow: var(--social-hover-shadow);
+}
+
+.social-button:hover::before {
+  opacity: 1;
+}
+
+/* Specific social network colors - these will override the default colors */
+.social-button[data-network="facebook"] {
+  --social-color: #1877F2;
+  --social-hover-bg: #1877F2;
+}
+
+.social-button[data-network="twitter"] {
+  --social-color: #1DA1F2;
+  --social-hover-bg: #1DA1F2;
+}
+
+.social-button[data-network="instagram"] {
+  --social-color: #E4405F;
+  --social-hover-bg: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+}
+
+.social-button[data-network="linkedin"] {
+  --social-color: #0077B5;
+  --social-hover-bg: #0077B5;
+}
+
+/* Dark theme variation */
+.dark .social-button {
+  --social-bg: rgba(255, 255, 255, 0.1);
+  --social-hover-bg: #1875FF;
+  --social-color: #f8fafc;
+  --social-hover-color: #ffffff;
+}
+
+/* Small size variation */
+.social-buttons.small .social-button {
+  --social-size: 36px;
+  font-size: 1rem;
+}
+
+/* Large size variation */
+.social-buttons.large .social-button {
+  --social-size: 48px;
+  font-size: 1.25rem;
+}
+
+/* For footer specifically */
+footer .social-buttons {
+  margin-top: 1rem;
+}
+
+/* For contact section specifically */
+.contact-section .social-buttons {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}

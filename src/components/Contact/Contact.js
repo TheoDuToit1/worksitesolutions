@@ -242,19 +242,25 @@ const Contact = () => {
                   ))}
                 </div>
                 
-                <div className="social-links">
+                <div className="social-section">
                   <h4>Follow Us</h4>
-                  <div className="social-icons">
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                      <FaFacebookF />
-                    </a>
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                      <FaXTwitter />
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                      <FaLinkedinIn />
-                    </a>
-                  </div>
+                  <ul className="social-buttons">
+                    <li>
+                      <a href="https://facebook.com" className="social-button" data-network="facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <FaFacebookF />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://twitter.com" className="social-button" data-network="twitter" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <FaXTwitter />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://linkedin.com" className="social-button" data-network="linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <FaLinkedinIn />
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
