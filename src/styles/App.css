@@ -31,24 +31,7 @@ body {
   position: relative;
 }
 
-/* Content visibility during loading */
-.content-hidden {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease-out;
-}
 
-/* Default content state (visible) */
-.main-content > div:not(.content-hidden) {
-  opacity: 1;
-  transition: opacity 0.3s ease-in 0.2s;
-}
-
-/* Prevent scrolling when loader is active */
-body.loading {
-  overflow: hidden;
-  height: 100vh;
-}
 
 .main-content {
   flex: 1;
