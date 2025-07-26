@@ -11,17 +11,18 @@ root.render(
   </React.StrictMode>
 );
 
-// Register service worker for PWA functionality
+// Unregister any existing service workers to clear cache
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(registration => {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      })
-      .catch(error => {
-        console.log('ServiceWorker registration failed: ', error);
-      });
+  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+    for(let registration of registrations) {
+      registration.unregister();
+    }
   });
+}
+
+// Clear any loader-related localStorage data
+if (localStorage.getItem('hasVisited')) {
+  localStorage.removeItem('hasVisited');
 }
 
 // If you want to start measuring performance in your app, pass a function
