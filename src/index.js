@@ -11,19 +11,8 @@ root.render(
   </React.StrictMode>
 );
 
-// Unregister any existing service workers to clear cache
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.getRegistrations().then(function(registrations) {
-    for(let registration of registrations) {
-      registration.unregister();
-    }
-  });
-}
-
-// Clear any loader-related localStorage data
-if (localStorage.getItem('hasVisited')) {
-  localStorage.removeItem('hasVisited');
-}
+// Loader completely removed - fresh deployment v2.0
+// No service worker or localStorage cleanup needed
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
