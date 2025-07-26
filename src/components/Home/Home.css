@@ -18,10 +18,10 @@
 .hero-content {
   position: relative;
   z-index: 2;
-  padding-top: 40px; /* Move content down by 40px */
+  padding-top: 20px; /* Move content down by 20px - reduced from 40px */
   max-width: 650px;
   margin: 0;
-  padding: 40px 2rem 0 4.5rem; /* Added 40px padding-top to create space below header */
+  padding: 20px 2rem 0 4.5rem; /* Reduced padding-top from 40px to 20px */
   animation: fadeInUp 1s ease-out;
 }
 
@@ -485,6 +485,33 @@
   
   .hero h1 {
     font-size: 2rem;
+  }
+  
+  .hero-content {
+    padding: 20px 1rem 0 1rem; /* Reduce side padding on mobile */
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+    width: 100%;
+    overflow: visible;
+  }
+  
+  .hero-buttons .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    white-space: normal;
+    flex-shrink: 1;
+  }
+  
+  .button {
+    width: 100%;
+    min-width: 100%;
+    text-align: center;
+    justify-content: center;
   }
   
   .features-grid,

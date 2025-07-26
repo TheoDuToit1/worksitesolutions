@@ -94,20 +94,6 @@ const ServiceDetail = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      {/* Back Button */}
-      <div className="back-button">
-        <div className="container">
-          <motion.div
-            whileHover={{ x: -5 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <Link to="/services" className="btn-back">
-              <FaArrowLeft /> Back to Services
-            </Link>
-          </motion.div>
-        </div>
-      </div>
-
       {/* Hero Section */}
       <motion.section 
         className="service-hero"
@@ -126,14 +112,27 @@ const ServiceDetail = () => {
           >
             {service.title}
           </motion.h1>
-          <motion.p 
-            className="service-category"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            {service.category.charAt(0).toUpperCase() + service.category.slice(1)}
-          </motion.p>
+          <div className="hero-actions">
+            <motion.p 
+              className="service-category"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
+              {service.category.charAt(0).toUpperCase() + service.category.slice(1)}
+            </motion.p>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              whileHover={{ x: -5 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Link to="/services" className="btn-back">
+                <FaArrowLeft /> Back to Services
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </motion.section>
 

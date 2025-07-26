@@ -6,10 +6,20 @@ import './Header.css';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
   const headerRef = useRef(null);
   const lastScrollY = useRef(0);
+  
+  // Toggle dropdown for mobile
+  const toggleDropdown = (dropdownName) => {
+    if (activeDropdown === dropdownName) {
+      setActiveDropdown(null);
+    } else {
+      setActiveDropdown(dropdownName);
+    }
+  };
 
   // Handle scroll events for header appearance
   useEffect(() => {
@@ -78,19 +88,23 @@ const Header = () => {
     };
   }, []);
 
-  // Close mobile menu when route changes
+  // Close mobile menu and dropdowns when route changes
   useEffect(() => {
     setIsOpen(false);
+    setActiveDropdown(null);
   }, [location]);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    const newIsOpen = !isOpen;
+    setIsOpen(newIsOpen);
     
-    // Toggle body scroll when menu is open/closed
-    if (!isOpen) {
+    // Toggle body scroll and overlay when menu is open/closed
+    if (newIsOpen) {
       document.body.style.overflow = 'hidden';
+      document.body.classList.add('menu-open');
     } else {
       document.body.style.overflow = 'auto';
+      document.body.classList.remove('menu-open');
     }
   };
 
@@ -118,10 +132,21 @@ const Header = () => {
   ];
 
   return (
-    <header 
-      ref={headerRef}
-      className={`header ${scrolled ? 'scrolled' : ''} ${isOpen ? 'menu-open' : ''}`}
-    >
+    <>
+      {isOpen && (
+        <div 
+          className={`nav-overlay ${isOpen ? 'open' : ''}`}
+          onClick={toggleMenu}
+          role="button"
+          aria-label="Close menu"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === 'Enter' && toggleMenu()}
+        />
+      )}
+      <header 
+        ref={headerRef}
+        className={`header ${scrolled ? 'scrolled' : ''} ${isOpen ? 'menu-open' : ''}`}
+      >
       <div className="container">
         <div className="header-container">
           <Link to="/" className="logo" onClick={() => window.scrollTo(0, 0)}>
@@ -155,19 +180,25 @@ const Header = () => {
               Home
             </Link>
             
-            <div className={`dropdown ${isActive('/services') ? 'active' : ''}`}>
+            <div className={`dropdown ${isActive('/services') ? 'active' : ''} ${activeDropdown === 'services' ? 'active' : ''}`}>
               <button 
                 className="dropdown-toggle nav-item"
-                aria-expanded={isActive('/services')}
+                aria-expanded={activeDropdown === 'services'}
                 aria-haspopup="true"
+                onClick={() => toggleDropdown('services')}
               >
                 Our Services
+                <FaChevronDown className="dropdown-icon" style={{
+                  marginLeft: '4px',
+                  transform: activeDropdown === 'services' ? 'rotate(180deg)' : 'rotate(0deg)',
+                  transition: 'transform 0.3s ease'
+                }} />
               </button>
               <div className="dropdown-menu" aria-labelledby="servicesDropdown">
-                <Link to="/services#funeral" className="dropdown-item">Funeral Plans</Link>
-                <Link to="/services#retirement" className="dropdown-item">Retirement Planning</Link>
-                <Link to="/services#investment" className="dropdown-item">Investment Plans</Link>
-                <Link to="/services#life" className="dropdown-item">Life Insurance</Link>
+                <Link to="/services#funeral" className="dropdown-item" onClick={() => setIsOpen(false)}>Funeral Plans</Link>
+                <Link to="/services#retirement" className="dropdown-item" onClick={() => setIsOpen(false)}>Retirement Planning</Link>
+                <Link to="/services#investment" className="dropdown-item" onClick={() => setIsOpen(false)}>Investment Plans</Link>
+                <Link to="/services#life" className="dropdown-item" onClick={() => setIsOpen(false)}>Life Insurance</Link>
               </div>
             </div>
             
@@ -196,7 +227,8 @@ const Header = () => {
           </nav>
         </div>
       </div>
-    </header>
+      </header>
+    </>
   );
 };
 
